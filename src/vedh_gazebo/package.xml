@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>vedh_gazebo</name>
+  <version>0.0.1</version>
+  <description>Custom Gazebo world with TurtleBot3 and A* path planning</description>
+  <maintainer email="vedhrox04@gmail.com">vedh</maintainer>
+  <license>MIT</license>
+
+  <!-- Build dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <!-- Execution dependencies -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>          <!-- For Path messages -->
+  <exec_depend>geometry_msgs</exec_depend>     <!-- For PoseStamped -->
+  <exec_depend>visualization_msgs</exec_depend><!-- RViz markers -->
+  <exec_depend>sensor_msgs</exec_depend>       <!-- For sensor data -->
+  <exec_depend>turtlebot3_gazebo</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>xacro</exec_depend>
+</package>
+

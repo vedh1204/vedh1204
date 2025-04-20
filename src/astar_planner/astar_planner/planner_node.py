@@ -53,7 +53,7 @@ class AStarPlanner(Node):
         )
 
     def astar(self, grid, start, goal):
-        """Fixed A* implementation with numpy grid handling"""
+       
         if grid is None:
             return []
             

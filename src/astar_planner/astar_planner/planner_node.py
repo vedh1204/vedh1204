@@ -17,7 +17,6 @@ class AStarPlanner(Node):
         self.start = None
         self.goal = None
 
-        # Subscribers
         self.pose_subscriber = self.create_subscription(
             PoseWithCovarianceStamped,
             '/amcl_pose',
@@ -30,19 +29,18 @@ class AStarPlanner(Node):
             self.map_callback,
             10
         )
-        self.goal_subscription = self.create_subscription(  # Added goal subscription
+        self.goal_subscription = self.create_subscription( 
             PoseStamped,
             'goal_pose',
             self.goal_callback,
             10
         )
 
-        # Publishers
         self.path_publisher = self.create_publisher(Path, 'planned_path', 10)
         self.velocity_publisher = self.create_publisher(Twist, 'cmd_vel', 10)
         self.navigator = BasicNavigator()
 
-    def goal_callback(self, msg):  # Added goal callback
+    def goal_callback(self, msg):  
         self.goal = (msg.pose.position.x, msg.pose.position.y)
         self.get_logger().info(f"New goal received: {self.goal}")
         if self.grid is not None and self.start is not None:
@@ -85,7 +83,6 @@ class AStarPlanner(Node):
                         ))
         return []
 
-    # Rest of the class remains unchanged except for numpy conversions
 
     def map_callback(self, msg):
         """Updated map processing"""
@@ -93,7 +90,6 @@ class AStarPlanner(Node):
         if self.grid is not None and self.start is not None and self.goal is not None:
             self.compute_path()
 
-    # Keep other methods unchanged...
 
 def main(args=None):
     rclpy.init(args=args)
